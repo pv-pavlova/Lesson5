@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handing Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="${message}"/>
+<p>Список книг</p>
+<table>
+    <tr>
+        <th>Название</th>
+        <th>Автор</th>
+        <th>Год</th>
+    </tr>
+    <tr th:each="book : ${books}">
+        <td th:text="${books.name}"></td>
+        <td th:text="${books.author}"></td>
+        <td th:text="${books.year}"></td>
+    </tr>
+</table>
+<form th:action="@{/books}"  method="post">
+    <p>Название: <input type="text" name="name" /></p>
+    <p>Автор: <input type="text" name="author" /></p>
+    <p>Год: <input type="text" name="year" /></p>
+    <p><input type="submit" value="Submit" /></p>
+</form>
+</body>
+</html>
+
+    <p></p>
+    <div th:if="${div}">
+        <p class="fs-4">Список книг пуст. Заполните его</p>
+    </div>
+
+    <div th:if="${not div}">
+        <table class="table table-striped">
+            <tr>
+                <th>Название</th>
+                <th>Автор</th>
+                <th>Количество страниц</th>
+                <th> </th>
+            </tr>
+            <tr th:each="book: ${books}">
+                <td th:text="${books.name}"></td>
+                <td th:text="${books.author}"></td>
+                <td th:text="${books.size}"></td>
+                <td><a th:href="@{/book?id={bookId}(bookId=${books.id})}">
+                    <button type="button" class="btn btn-light" >
+                        <img src="https://img.icons8.com/dusk/16/000000/filled-trash.png"/>
+                    </button>
+                </a></td>
+            </tr>
+        </table>
+        <a href="https://icons8.com/icon/104338/remove"></a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${Book.getName()}">Просмотр</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Название</th>
+        <th>Автор</th>
+        <th>Год</th>
+    </tr>
+    <tr>
+        <td th:text="${Book.getName()}">Название</td>
+        <td th:text="${Book.getAuthor()}">Автор</td>
+        <td th:text="${Book.getYear()}">Год издания</td>
+    </tr>
+</table>
+<form th:method="DELETE" th:action="@{/{id}(id=${Book.getId()})}">
+    <input type="submit" value="Удалить книгу из списка"/>
+</form>
+<a href="/">Вернуться к списку книг</a>
+</body>
+</html>
